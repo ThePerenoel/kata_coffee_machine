@@ -59,6 +59,9 @@ class DrinkOrderTest {
                     )), Arguments.of(Named.of(
                             "return M:Missing 0.40 euros when the drinkOrder is tea with 0.00 euros",
                             Payload.of(DrinkType.TEA, 0, new BigDecimal("0.00"), "M:Missing 0.40 euros")
+                    )), Arguments.of(Named.of(
+                            "return H:: when the drink is hot chocolate with no sugar",
+                            Payload.of(DrinkType.HOT_CHOCOLATE, 0, new BigDecimal("1.10"), "H::")
                     ))
             );
         }
