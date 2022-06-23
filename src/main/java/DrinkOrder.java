@@ -1,13 +1,17 @@
+import java.math.BigDecimal;
+
 public class DrinkOrder {
     public static final String NO_SUGAR_SEPARATOR = "::";
     public static final String SEPARATOR = ":";
     public static final String ONE_STICK = ":0";
     private DrinkType drinkType;
     private int numberOfSugar;
+    private BigDecimal givenMoney;
 
-    public DrinkOrder(DrinkType drinkType, int numberOfSugar) {
+    public DrinkOrder(DrinkType drinkType, int numberOfSugar, BigDecimal givenMoney) {
         this.drinkType = drinkType;
         this.numberOfSugar = numberOfSugar;
+        this.givenMoney = givenMoney;
     }
 
     public String getStringCommand() {
