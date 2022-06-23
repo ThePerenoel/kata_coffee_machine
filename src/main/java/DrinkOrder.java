@@ -1,8 +1,8 @@
-public class Drink {
+public class DrinkOrder {
     private DrinkType drinkType;
     private int numberOfSugar;
 
-    public Drink(DrinkType drinkType, int numberOfSugar) {
+    public DrinkOrder(DrinkType drinkType, int numberOfSugar) {
         this.drinkType = drinkType;
         this.numberOfSugar = numberOfSugar;
     }
