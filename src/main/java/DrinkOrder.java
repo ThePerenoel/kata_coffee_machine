@@ -15,6 +15,10 @@ public class DrinkOrder {
     }
 
     public String getStringCommand() {
+        BigDecimal drinkPrice = drinkType.getPrice();
+        if (givenMoney.compareTo(drinkPrice) == -1) {
+            return "M:Missing " + drinkPrice.subtract(givenMoney) + " euros";
+        }
         if (numberOfSugar == 0) {
             return drinkType.getValue() + NO_SUGAR_SEPARATOR;
         }

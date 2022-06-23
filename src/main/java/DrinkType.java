@@ -1,13 +1,23 @@
+import java.math.BigDecimal;
+
 public enum DrinkType {
-    TEA("T"), HOT_CHOCOLATE("H"), COFFEE("C");
+    TEA("T", new BigDecimal("0.40")),
+    HOT_CHOCOLATE("H", new BigDecimal("0.50")),
+    COFFEE("C", new BigDecimal("0.60"));
 
     private String value;
+    private BigDecimal price;
 
-    DrinkType(String value) {
+    DrinkType(String value, BigDecimal price) {
         this.value = value;
+        this.price = price;
     }
 
     public String getValue() {
         return value;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
     }
 }
