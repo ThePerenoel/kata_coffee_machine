@@ -65,6 +65,15 @@ class DrinkOrderTest {
                     )), Arguments.of(Named.of(
                             "return O:: when the drink is orange juice with 0.60 euros",
                             Payload.of(DrinkType.ORANGE_JUICE, 0, new BigDecimal("0.60"), "O::")
+                    )), Arguments.of(Named.of(
+                            "return Ch:: when the drink is extra hot coffee with 0.60 euros",
+                            Payload.of(DrinkType.EXTRA_HOT_COFFEE, 0, new BigDecimal("0.60"), "Ch::")
+                    )), Arguments.of(Named.of(
+                            "return Hh:1:0 when the drink is extra hot chocolate with 0.50 euros",
+                            Payload.of(DrinkType.EXTRA_HOT_HOT_CHOCOLATE, 1, new BigDecimal("0.50"), "Hh:1:0")
+                    )), Arguments.of(Named.of(
+                            "return Th:2:0 when the drink is extra hot chocolate with 0.40 euros",
+                            Payload.of(DrinkType.EXTRA_HOT_TEA, 2, new BigDecimal("0.40"), "Th:2:0")
                     ))
             );
         }
