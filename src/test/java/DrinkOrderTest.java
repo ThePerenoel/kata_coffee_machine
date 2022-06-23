@@ -27,31 +27,31 @@ class DrinkOrderTest {
             return Stream.of(
                     Arguments.of(Named.of(
                             "return H:: when the drink is hot chocolate with no sugar",
-                            new Payload(new DrinkOrder(DrinkType.HOT_CHOCOLATE, 0), "H::")
+                            Payload.of(DrinkType.HOT_CHOCOLATE, 0, "H::")
                     )), Arguments.of(Named.of(
                             "return H:1:0 when the drink is hot chocolate with one sugar",
-                            new Payload(new DrinkOrder(DrinkType.HOT_CHOCOLATE, 1), "H:1:0")
+                            Payload.of(DrinkType.HOT_CHOCOLATE, 1, "H:1:0")
                     )), Arguments.of(Named.of(
                             "return H:2:0 when the drink is hot chocolate with 2 sugars",
-                            new Payload(new DrinkOrder(DrinkType.HOT_CHOCOLATE, 2), "H:2:0")
+                            Payload.of(DrinkType.HOT_CHOCOLATE, 2, "H:2:0")
                     )), Arguments.of(Named.of(
                             "return T:: when the drink is tea with no sugar",
-                            new Payload(new DrinkOrder(DrinkType.TEA, 0), "T::")
+                            Payload.of(DrinkType.TEA, 0, "T::")
                     )), Arguments.of(Named.of(
                             "return T:1:0 when the drink is tea with 1 sugar",
-                            new Payload(new DrinkOrder(DrinkType.TEA, 1), "T:1:0")
+                            Payload.of(DrinkType.TEA, 1, "T:1:0")
                     )), Arguments.of(Named.of(
                             "return T:2:0 when the drink is tea with 2 sugars",
-                            new Payload(new DrinkOrder(DrinkType.TEA, 2), "T:2:0")
+                            Payload.of(DrinkType.TEA, 2, "T:2:0")
                     )), Arguments.of(Named.of(
                             "return C:: when the drink is coffee with no sugar",
-                            new Payload(new DrinkOrder(DrinkType.COFFEE, 0), "C::")
+                            Payload.of(DrinkType.COFFEE, 0, "C::")
                     )), Arguments.of(Named.of(
                             "return C:1:0 when the drink is coffee with no sugar",
-                            new Payload(new DrinkOrder(DrinkType.COFFEE, 1), "C:1:0")
+                            Payload.of(DrinkType.COFFEE, 1, "C:1:0")
                     )), Arguments.of(Named.of(
                             "return C:2:0 when the drink is coffee with no sugar",
-                            new Payload(new DrinkOrder(DrinkType.COFFEE, 2), "C:2:0")
+                            Payload.of(DrinkType.COFFEE, 2, "C:2:0")
                     ))
             );
         }
@@ -60,9 +60,14 @@ class DrinkOrderTest {
             DrinkOrder drinkOrder;
             String expectedCommand;
 
-            public Payload(DrinkOrder drinkOrder, String expectedCommand) {
+            private Payload(DrinkOrder drinkOrder, String expectedCommand) {
                 this.drinkOrder = drinkOrder;
                 this.expectedCommand = expectedCommand;
+            }
+
+            public static Payload of(DrinkType drinkType, int numberOfSugar, String expectedCommand) {
+                DrinkOrder drinkOrder = new DrinkOrder(drinkType, numberOfSugar);
+                return new Payload(drinkOrder, expectedCommand);
             }
         }
     }
