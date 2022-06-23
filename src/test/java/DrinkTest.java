@@ -1,6 +1,11 @@
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Named;
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,26 +15,37 @@ class DrinkTest {
     @DisplayName("getStringCommand() should")
     class GetStringCommandShould {
 
-        @Test
-        @DisplayName("return H:: given hot chocolate with no sugar")
-        void return_H_given_hot_chocolate_with_no_sugar() {
-            Drink hotChocolateWithoutSugar = new Drink(DrinkType.HOT_CHOCOLATE, 0);
-            String expectedStringCommand = "H::";
-
-            String stringCommand = hotChocolateWithoutSugar.getStringCommand();
-
-            assertThat(stringCommand).isEqualTo(expectedStringCommand);
+        @ParameterizedTest
+        @DisplayName("return the correct string command according to the drink")
+        @MethodSource("namedArguments")
+        void return_the_correct_string_command_according_to_the_drink(Payload payload) {
+            String stringCommand = payload.drink.getStringCommand();
+            assertThat(stringCommand).isEqualTo(payload.expectedCommand);
         }
 
-        @Test
-        @DisplayName("return H:1:0 given hot chocolate with one sugar")
-        void return_H10_given_hot_chocolate_with_one_sugar() {
-            Drink hotChocolateWithoutSugar = new Drink(DrinkType.HOT_CHOCOLATE, 1);
-            String expectedStringCommand = "H:1:0";
+        static Stream<Arguments> namedArguments() {
+            return Stream.of(
+                    Arguments.of(Named.of(
+                            "return H:: when the drink is hot chocolate with no sugar",
+                            new Payload(new Drink(DrinkType.HOT_CHOCOLATE, 0), "H::")
+                    )), Arguments.of(Named.of(
+                            "return H:1:0 when the drink is hot chocolate with one sugar",
+                            new Payload(new Drink(DrinkType.HOT_CHOCOLATE, 1), "H:1:0")
+                    )), Arguments.of(Named.of(
+                            "return H:2:0 when the drink is hot chocolate with 2 sugars",
+                            new Payload(new Drink(DrinkType.HOT_CHOCOLATE, 2), "H:2:0")
+                    ))
+            );
+        }
 
-            String stringCommand = hotChocolateWithoutSugar.getStringCommand();
+        private static class Payload {
+            Drink drink;
+            String expectedCommand;
 
-            assertThat(stringCommand).isEqualTo(expectedStringCommand);
+            public Payload(Drink drink, String expectedCommand) {
+                this.drink = drink;
+                this.expectedCommand = expectedCommand;
+            }
         }
     }
 

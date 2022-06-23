@@ -13,4 +13,12 @@ public class Drink {
         }
         return "H:" + numberOfSugar + ":0";
     }
+
+    @Override
+    public String toString() {
+        return "Drink{" +
+                "drinkType=" + drinkType +
+                ", numberOfSugar=" + numberOfSugar +
+                '}';
+    }
 }
