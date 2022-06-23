@@ -1,5 +1,5 @@
 public enum DrinkType {
-    TEA("T"), HOT_CHOCOLATE("H");
+    TEA("T"), HOT_CHOCOLATE("H"), COFFEE("C");
 
     private String value;
 

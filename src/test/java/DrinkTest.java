@@ -37,6 +37,21 @@ class DrinkTest {
                     )), Arguments.of(Named.of(
                             "return T:: when the drink is tea with no sugar",
                             new Payload(new Drink(DrinkType.TEA, 0), "T::")
+                    )), Arguments.of(Named.of(
+                            "return T:1:0 when the drink is tea with 1 sugar",
+                            new Payload(new Drink(DrinkType.TEA, 1), "T:1:0")
+                    )), Arguments.of(Named.of(
+                            "return T:2:0 when the drink is tea with 2 sugars",
+                            new Payload(new Drink(DrinkType.TEA, 2), "T:2:0")
+                    )), Arguments.of(Named.of(
+                            "return C:: when the drink is coffee with no sugar",
+                            new Payload(new Drink(DrinkType.COFFEE, 0), "C::")
+                    )), Arguments.of(Named.of(
+                            "return C:1:0 when the drink is coffee with no sugar",
+                            new Payload(new Drink(DrinkType.COFFEE, 1), "C:1:0")
+                    )), Arguments.of(Named.of(
+                            "return C:2:0 when the drink is coffee with no sugar",
+                            new Payload(new Drink(DrinkType.COFFEE, 2), "C:2:0")
                     ))
             );
         }
