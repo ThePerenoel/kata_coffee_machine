@@ -34,6 +34,9 @@ class DrinkTest {
                     )), Arguments.of(Named.of(
                             "return H:2:0 when the drink is hot chocolate with 2 sugars",
                             new Payload(new Drink(DrinkType.HOT_CHOCOLATE, 2), "H:2:0")
+                    )), Arguments.of(Named.of(
+                            "return T:: when the drink is tea with no sugar",
+                            new Payload(new Drink(DrinkType.TEA, 0), "T::")
                     ))
             );
         }

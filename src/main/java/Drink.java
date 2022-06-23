@@ -9,9 +9,9 @@ public class Drink {
 
     public String getStringCommand() {
         if (numberOfSugar == 0) {
-            return "H::";
+            return drinkType.getValue() + "::";
         }
-        return "H:" + numberOfSugar + ":0";
+        return drinkType.getValue() + ":" + numberOfSugar + ":0";
     }
 
     @Override
